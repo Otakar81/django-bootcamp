@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Access Records</title>
+    <link rel="stylesheet" href="{% static "test_app/css/mystyle.css" %}"></link>
+</head>
+<body>
+
+<h1>Elenco Access Records</h1>
+
+{% if access_records %}
+<div class="django_table" >
+    <table>
+        <thead>
+            <th>Site Name</th>
+            <th>Date Accessed</th>
+        </thead>
+
+    {% for acr in access_records %}
+        <tr>
+            <td>{{ acr.name }}</td>
+            <td>{{ acr.date }}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+</div>
+
+{% else %}
+    <p> Non ci sono accessi nel sito </p>
+{% endif %}
+
+</body>
+</html>

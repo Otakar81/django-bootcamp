@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Base</title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.css' %} " />
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap-theme.css' %} " />
+
+    <link rel="script" href="{% static 'bootstrap-3.3.7/js/bootstrap.js' %} " />
+    <link rel="script" href="{% static 'bootstrap-3.3.7/js/npm.js' %} " />
+
+</head>
+<body>
+
+    <div class="container">
+        {% block body_block %}
+        {% endblock %}
+    </div>
+
+
+</body>
+</html>
