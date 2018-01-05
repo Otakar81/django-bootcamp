@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+ <div class="jumbotron">
+     <h2>Elenco post</h2>
+
+     <ol>
+         {% for post in posts %}
+            <h2><li>{{post.title}}</li></h2>
+         {% endfor %}
+     </ol>
+</div>
+
+{% endblock %}
