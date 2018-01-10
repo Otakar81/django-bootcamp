@@ -1,10 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "blog/base.html" %}
 
-</body>
-</html>
+{% block content %}
+     <div class="jumbotron">
+
+         <div class="page-header">
+          <h2>{{ post.title }}
+              <small>Posted by {{ post.author }} in {{ post.publish_date }}</small>
+          </h2>
+        </div>
+
+        <p>{{ post.text }}</p>
+
+         {% if user.is_authenticated %}
+         <!-- Pulsanti di modifica, pubblicazione e cancellazione -->
+
+         <p>
+             <a href="{% url 'blog:post_edit' pk=post.pk %}">
+                 <span class="glyphicon glyphicon-edit" title="Edit post"></span>
+             </a>
+             <a href="{% url 'blog:post_remove' pk=post.pk %}">
+                 <span class="glyphicon glyphicon-remove" title="Delete post"></span>
+             </a>
+
+             {% if post.publish_date == null %}
+                 <a href="{% url 'blog:post_publish' pk=post.pk %}">
+                     <span class="glyphicon glyphicon-ok" title="Publish post"></span>
+                 </a>
+             {% else %}
+                <div align="right">
+                    <a class="btn btn-default" href="{% url 'blog:add_comment_to_post' pk=post.pk %}">
+                     Add comment
+                    </a>
+                </div>
+
+             {% endif %}
+
+         </p>
+         {% endif %}
+
+
+
+         </br>
+
+         {% if post.approve_comments.count > 0 %}
+            <div class="approved-comments">
+                 <b>Comments: {{ post.approve_comments.count }}</b>
+
+                 <dl>
+                     {% for comment in post.approve_comments.all %}
+                     <div class="comment">
+                        <dt>Posted by {{ comment.author }} in {{ comment.create_date }}</dt>
+                        <dd>{{ comment.text }}</dd>
+                     </div>
+                     {% endfor %}
+                 </dl>
+            </div>
+         {% endif %}
+
+
+
+         {% if user.is_authenticated %}
+
+            <!-- Elenco commenti da approvare -->
+             {% if post.not_approved_comments.count > 0 %}
+                <div class="not-approved-comments">
+                     <b>Comments to approve: {{ post.not_approved_comments.count }}</b>
+                    {% for comment in post.not_approved_comments.all %}
+                     <dl>
+                         {% for comment in post.not_approved_comments.all %}
+                         <div class="comment">
+                            <dt>Posted by {{ comment.author }} in {{ comment.create_date }}</dt>
+                            <dd>{{ comment.text }}</dd>
+                            <a href="{% url 'blog:comment_approve' pk=comment.pk %}">
+                                <span class="glyphicon glyphicon-ok" title="Approve comment"></span>
+                            </a>
+                            <a href="{% url 'blog:comment_remove' pk=comment.pk %}">
+                                <span class="glyphicon glyphicon-remove" title="Delete comment"></span>
+                            </a>
+                         </div>
+                         {% endfor %}
+                     </dl>
+                    {% endfor %}
+                 </div>
+             {% endif %}
+        {% endif %}
+
+
+
+     </div>
+{% endblock %}

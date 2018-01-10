@@ -1,0 +1,39 @@
+.techfont {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.big-brand {
+    font-size: 1.5em;
+}
+
+.centerstage {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.approved-comments {
+    border-radius: 5px;
+    margin-top: 25px;
+    border-top: solid lightslategrey;
+    border-bottom: solid lightslategrey;
+    padding: 5px;
+}
+
+.not-approved-comments {
+    border-radius: 5px;
+    margin-top: 25px;
+    border-top: solid lightgrey;
+    border-bottom: solid lightgrey;
+    padding: 5px;
+    color: grey;
+}
+
+.comment {
+    margin-top: 10px;
+}
+
+dl {
+    margin-left: 25px;
+}
+

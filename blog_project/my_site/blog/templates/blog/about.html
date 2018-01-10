@@ -1,10 +1,34 @@
-{% extends "base.html" %}
+{% extends "blog/base.html" %}
 
 
-{% block body_block %}
+{% block content %}
 
  <div class="jumbotron">
-     <h1>Home Page</h1>
+     <h1>About</h1>
+     <p>
+         Creazione Progetto: django-admin startproject [nome progetto]
+         <br>
+
+         Creazione di una App: python manage.py startapp [nome_app]
+         <br>
+
+         Installazione della app nel portale: aggiungerla alla sezione INSTALLED_APPS di settings.py del progetto
+         Ed effettuare il: python manage.py makemigrations (crea un file in migrations della app, preparando il terreno alla successiva migrazione)
+         Quindi lanciare: python manage.py migrate per renderle effettive scrivendole sul database
+         <br>
+
+         Startup server: python manage.py runserver
+         <br>
+
+         Creazione Superuser: python manage.py createsuperuser
+         <br>
+
+         Per applicare le migrazioni ("collega" le app del progetto al nostro database): python manage.py migrate
+         <br>
+
+         Su Pycharm
+         Per aprire le proprietà e modificare ad esempio l'interprete, premere "ctrl + alt + S"
+     </p>
  </div>
 
 {% endblock %}
