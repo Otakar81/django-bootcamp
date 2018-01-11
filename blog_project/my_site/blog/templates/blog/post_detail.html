@@ -4,12 +4,12 @@
      <div class="jumbotron">
 
          <div class="page-header">
-          <h2>{{ post.title }}
+          <h2>{{ post.title|safe|linebreaksbr }}
               <small>Posted by {{ post.author }} in {{ post.publish_date }}</small>
           </h2>
         </div>
 
-        <p>{{ post.text }}</p>
+        <p>{{ post.text|safe|linebreaksbr }}</p>
 
          {% if user.is_authenticated %}
          <!-- Pulsanti di modifica, pubblicazione e cancellazione -->
@@ -39,7 +39,7 @@
          {% endif %}
 
 
-
+         <hr>
          </br>
 
          {% if post.approve_comments.count > 0 %}
@@ -50,7 +50,7 @@
                      {% for comment in post.approve_comments.all %}
                      <div class="comment">
                         <dt>Posted by {{ comment.author }} in {{ comment.create_date }}</dt>
-                        <dd>{{ comment.text }}</dd>
+                        <dd>{{ comment.text|safe|linebreaksbr }}</dd>
                      </div>
                      {% endfor %}
                  </dl>
@@ -70,7 +70,7 @@
                          {% for comment in post.not_approved_comments.all %}
                          <div class="comment">
                             <dt>Posted by {{ comment.author }} in {{ comment.create_date }}</dt>
-                            <dd>{{ comment.text }}</dd>
+                            <dd>{{ comment.text|safe|linebreaksbr }}</dd>
                             <a href="{% url 'blog:comment_approve' pk=comment.pk %}">
                                 <span class="glyphicon glyphicon-ok" title="Approve comment"></span>
                             </a>
@@ -84,8 +84,6 @@
                  </div>
              {% endif %}
         {% endif %}
-
-
 
      </div>
 {% endblock %}

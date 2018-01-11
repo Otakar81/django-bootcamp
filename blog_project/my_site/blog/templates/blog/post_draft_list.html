@@ -11,6 +11,7 @@
             <div class="date">
                 <p>Created on: {{post.create_date|date:"D M Y"}}</p>
             </div>
+            <p>{{ post.text|safe|truncatechars:200 }}</p>
         </div>
      {% endfor %}
 
