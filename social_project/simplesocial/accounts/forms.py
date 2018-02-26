@@ -9,7 +9,7 @@ class UserCreateForm(UserCreationForm):
         model = get_user_model()
 
     def __init__(self,*args,**kwargs):
-        super.__init__(*args,**kwargs)
+        super().__init__(*args,**kwargs)
 
         #Personalizziamo le label che saranno mostrate nella form
         self.fields['username'].label = 'Display Name'

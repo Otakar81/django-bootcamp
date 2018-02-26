@@ -12,7 +12,7 @@
     <link rel="script" href="{% static 'bootstrap-3.3.7/js/npm.js' %} " />
 
 
-    <link rel="stylesheet" href="{% static 'css/master.css' %} " />
+    <link rel="stylesheet" href="{% static 'simplesocial/css/master.css'%}">
 
 
 </head>
@@ -36,9 +36,9 @@
 
                 {% else %}
 
-                    <li><a class="navbar-link" href="#">Groups</a></li>
-                    <li><a class="navbar-link" href="{% url 'accounts:login' %}">Log In</a></li>
-                    <li><a class="navbar-link" href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                    <li><a href="#"class="btn btn-simple">Groups</a></li>
+                    <li><a href="{% url 'accounts:login' %}" class="btn btn-simple">Log in</a></li>
+                    <li><a href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a></li>
 
                 {% endif %}
 
@@ -47,8 +47,8 @@
 
     </nav>
 
-    <div class="container">
-        {% block body_block %}
+    <div class="container mycontent">
+        {% block content %}
         {% endblock %}
     </div>
 
